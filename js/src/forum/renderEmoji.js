@@ -6,7 +6,7 @@ import { override } from 'flarum/extend';
 import Post from 'flarum/models/Post';
 
 export default function renderEmoji() {
-  override(Post.prototype, 'contentHtml', function(original) {
+  override(Post.prototype, 'contentHtml', function (original) {
     const contentHtml = original();
 
     if (this.oldContentHtml !== contentHtml) {

@@ -10,17 +10,23 @@ export default class AutocompleteDropdown extends Component {
   view() {
     return (
       <ul className="Dropdown-menu EmojiDropdown">
-        <li className="Dropdown-header" key="0">{app.translator.trans('flarum-emoji.forum.composer.type_to_search_text')}</li>
-        {this.props.items.map(item => <li key={item.attrs.key}>{item}</li>)}
+        <li className="Dropdown-header" key="0">
+          {app.translator.trans('flarum-emoji.forum.composer.type_to_search_text')}
+        </li>
+        {this.props.items.map((item) => (
+          <li key={item.attrs.key}>{item}</li>
+        ))}
       </ul>
     );
   }
 
   show(left, top) {
-    this.$().show().css({
-      left: left + 'px',
-      top: top + 'px'
-    });
+    this.$()
+      .show()
+      .css({
+        left: left + 'px',
+        top: top + 'px',
+      });
     this.active = true;
   }
 
@@ -33,7 +39,7 @@ export default class AutocompleteDropdown extends Component {
     this.keyWasJustPressed = true;
     this.setIndex(this.index + delta, true);
     clearTimeout(this.keyWasJustPressedTimeout);
-    this.keyWasJustPressedTimeout = setTimeout(() => this.keyWasJustPressed = false, 500);
+    this.keyWasJustPressedTimeout = setTimeout(() => (this.keyWasJustPressed = false), 500);
   }
 
   complete() {
@@ -72,7 +78,7 @@ export default class AutocompleteDropdown extends Component {
       }
 
       if (typeof scrollTop !== 'undefined') {
-        $dropdown.stop(true).animate({scrollTop}, 100);
+        $dropdown.stop(true).animate({ scrollTop }, 100);
       }
     }
   }
